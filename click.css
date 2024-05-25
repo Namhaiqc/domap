@@ -1,0 +1,55 @@
+.toiletBtn {
+  z-index: 2;
+  position: relative;
+  background-color: red;
+  width: 80vw;
+  height: 11vh;
+  margin-left: 40vw;
+  margin-top: 85vh;
+  max-width: 400px; /* Set
+maximum width */
+  max-height: 200px; /* Set maximum height */
+  min-width: 50px; /*
+Set minimum width */
+  min-height: 25px; /* Set minimum height */
+} /* Media query
+for screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+  .toiletBtn {
+    width: 50vw; /* Increase width for small screens */
+    height: 22vh;
+    /* Increase height for small screens */
+    margin: 146.954% 0 0 25%;
+  }
+} /* Media
+query for screens smaller than 800px */
+@media only screen and (max-width: 800px) {
+  .toiletBtn {
+    width: 50vw; /* Increase width for small screens */
+    height: 22vh; /* Increase height for small screens */
+    margin: 148.7% 0 0 25%;
+  }
+} /* Media query for screens smaller than 900px */
+@media only screen and (max-width: 900px) {
+  .toiletBtn {
+    width: 50vw; /* Increase width for small
+screens */
+    height: 22vh; /* Increase height for small screens */
+    margin: 151.3% 0 0 25%;
+  }
+} /* Media query for screens smaller than 950px */
+@media only screen and (max-width: 950px) {
+  .toiletBtn {
+    width: 50vw; /* Increase width for small
+screens */
+    height: 22vh; /* Increase height for small screens */
+    margin: 151.4% 0 0 25%;
+  }
+} /* Media query for screens larger than 1200px */
+@media only screen and (min-width: 1200px) {
+  .toiletBtn {
+    width: 12.5vw;
+    height: 5.5vh;
+    margin: 146.954% 0 0 25%;
+  }
+}

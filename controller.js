@@ -146,7 +146,7 @@ function handleUserLocation(position) {
 
   if (chosenDestination) {
     const distance = calculateDistanceToRoute(userLocation, chosenDestination);
-    if (distance > 50) {
+    if (distance > 5) {
       getRoute(userLocation, chosenDestination);
     }
   }

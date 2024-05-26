@@ -3,7 +3,7 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoibmFtaGFpcXUiLCJhIjoiY2x3N3hxc2F1MWZxbTJtcnpoaWIzNHNqbyJ9.pqFAMHce7XsTP_tH_p10tQ";
 
 
-// Initialize the Mapbox map
+//  the Mapbox map
 let map = new mapboxgl.Map({
   container: "map", // HTML container ID for the map
   style: "mapbox://styles/mapbox/streets-v11", // Map style URL

@@ -461,12 +461,10 @@ if (navigator.geolocation) {
         .setLngLat(userLocation)
         .addTo(map);
 
-      // If a destination is chosen, set the route
+// If a destination is chosen, set the route
       if (chosenDestination) {
-        setRouteFromStartToEnd(userLocation, chosenDestination);
+        getRoute(userLocation, chosenDestination);
       }
-            // Center the map on the user's location and follow
-            map.setCenter(userLocation);
     },
     (error) => {
       console.error("Error watching position:", error); // Handle geolocation errors

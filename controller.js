@@ -134,7 +134,6 @@ var chosenDestination = null;
 var userLocation = null;
 var trackUser = true;
 
-// Function to handle user location updates
 function handleUserLocation(position) {
   userLocation = [position.coords.longitude, position.coords.latitude];
 
@@ -154,6 +153,55 @@ function handleUserLocation(position) {
   updateDistances(userLocation);
 }
 
+function calculateDistanceToRoute(userLocation, routeCoordinates) {
+  let closestDistance = Infinity;
+  for (let i = 0; i < routeCoordinates.length - 1; i++) {
+    const segmentStart = routeCoordinates[i];
+    const segmentEnd = routeCoordinates[i + 1];
+    const distance = perpendicularDistance(userLocation, segmentStart, segmentEnd);
+    if (distance < closestDistance) {
+      closestDistance = distance;
+    }
+  }
+  return closestDistance;
+}
+
+function perpendicularDistance(point, lineStart, lineEnd) {
+  const [x, y] = point;
+  const [x1, y1] = lineStart;
+  const [x2, y2] = lineEnd;
+
+  const A = x - x1;
+  const B = y - y1;
+  const C = x2 - x1;
+  const D = y2 - y1;
+
+  const dot = A * C + B * D;
+  const lenSq = C * C + D * D;
+  let param = -1;
+  if (lenSq !== 0) {
+    param = dot / lenSq;
+  }
+
+  let xx, yy;
+
+  if (param < 0) {
+    xx = x1;
+    yy = y1;
+  } else if (param > 1) {
+    xx = x2;
+    yy = y2;
+  } else {
+    xx = x1 + param * C;
+    yy = y1 + param * D;
+  }
+
+  const dx = x - xx;
+  const dy = y - yy;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+
 
 // Function to calculate the shortest distance from a point to a route
 function calculateDistanceToRoute(userLocation, routeCoordinates) {
@@ -170,7 +218,7 @@ function calculateDistanceToRoute(userLocation, routeCoordinates) {
 }
 // Function to get the route between user location and destination
 function getRoute(start, end) {
-  const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
+  const url = `https://api.mapbox.com/directions/v5/mapbox/walking/${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
 
   fetch(url)
     .then(response => response.json())
